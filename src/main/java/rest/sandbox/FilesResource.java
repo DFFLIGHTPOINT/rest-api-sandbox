@@ -50,7 +50,7 @@ public class FilesResource {
     }
     ArrayList<Bean> list = new ArrayList<Bean>(i);
     for (int j = 0; j < i; j++) {
-      list.add(new Bean(String.valueOf(i)));
+      list.add(new Bean(String.valueOf(j)));
     }
     return list;
   }
