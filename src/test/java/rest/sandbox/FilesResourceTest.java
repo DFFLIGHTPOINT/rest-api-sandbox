@@ -4,13 +4,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.core.util.FeaturesAndProperties;
 import com.sun.jersey.test.framework.JerseyTest;
 import com.sun.jersey.test.framework.WebAppDescriptor;
 import com.sun.jersey.test.framework.spi.container.TestContainerException;
-import org.junit.Test;
+import org.testng.annotations.*;
 
 import javax.ws.rs.core.MediaType;
 
@@ -20,18 +21,38 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author Vladislav.Rassokhin
  */
-public class FilesResourceTest extends JerseyTest {
+public class FilesResourceTest {
 
   public static final String FILES_ARRAY = "/files/array/";
   public static final String FILES_LIST = "/files/list/";
   public static final String FILES_WRAPPER = "/files/wrapper/";
+  private final JerseyTest myJerseyTest;
 
-  public FilesResourceTest() throws TestContainerException {
-    super(new WebAppDescriptor.Builder("javax.ws.rs.Application", SandboxApplication.class.getName())
+  public FilesResourceTest() {
+    myJerseyTest = new JerseyTest(new WebAppDescriptor.Builder("javax.ws.rs.Application", SandboxApplication.class.getName())
         .initParam(JSONConfiguration.FEATURE_POJO_MAPPING, "true")
         .initParam(FeaturesAndProperties.FEATURE_XMLROOTELEMENT_PROCESSING, "true")
 //        .initParam(FeaturesAndProperties.FEATURE_FORMATTED, "true")
-        .build());
+        .build()) {
+    };
+  }
+
+  @BeforeClass
+  public void setUp() throws Exception {
+    myJerseyTest.setUp();
+  }
+
+  @AfterClass
+  public void tearDown() throws Exception {
+    myJerseyTest.tearDown();
+  }
+
+  public WebResource resource() {
+    return myJerseyTest.resource();
+  }
+
+  public Client client() {
+    return myJerseyTest.client();
   }
 
   //  @Test
@@ -87,7 +108,7 @@ public class FilesResourceTest extends JerseyTest {
     System.out.println("===json===\n" + r.path(path).accept(MediaType.APPLICATION_JSON).get(String.class));
   }
 
-//  @Test
+  //  @Test
   public void testArrayAndListSame() throws Exception {
     assertEquals(getAsString(FILES_ARRAY + 0, MediaType.APPLICATION_XML_TYPE), getAsString(FILES_LIST + 0, MediaType.APPLICATION_XML_TYPE));
     assertEquals(getAsString(FILES_ARRAY + 1, MediaType.APPLICATION_XML_TYPE), getAsString(FILES_LIST + 1, MediaType.APPLICATION_XML_TYPE));

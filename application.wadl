@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+    <doc xmlns:jersey="http://jersey.java.net/" jersey:generatedBy="Jersey: 1.17 01/17/2013 03:31 PM"/>
+    <grammars>
+        <include href="application.wadl/xsd0.xsd">
+            <doc title="Generated" xml:lang="en"/>
+        </include>
+    </grammars>
+    <resources base="http://localhost:9998/">
+        <resource path="/files">
+            <resource path="/array{count:(/\d*)?}">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" style="template" type="xs:string"/>
+                <method id="getArray" name="GET">
+                    <response>
+                        <representation mediaType="application/json"/>
+                        <representation mediaType="application/xml"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="/list{count:(/\d*)?}">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" style="template" type="xs:string"/>
+                <method id="getList" name="GET">
+                    <response>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="file" mediaType="application/json"/>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="file" mediaType="application/xml"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="/wrapper{count:(/\d*)?}">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="count" style="template" type="xs:string"/>
+                <method id="getWrapper" name="GET">
+                    <response>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="files" mediaType="application/json"/>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="files" mediaType="application/xml"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+    </resources>
+</application>

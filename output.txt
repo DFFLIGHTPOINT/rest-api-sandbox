@@ -1,0 +1,67 @@
+ARRAY
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files></files>
+===json===
+[ ]
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files><file name="0"/></files>
+===json===
+[ {
+  "name" : "0"
+} ]
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files><file name="0"/><file name="1"/></files>
+===json===
+[ {
+  "name" : "0"
+}, {
+  "name" : "1"
+} ]
+
+
+LIST
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files></files>
+===json===
+[ ]
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files><file name="0"/></files>
+===json===
+[ {
+  "name" : "0"
+} ]
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files><file name="0"/><file name="1"/></files>
+===json===
+[ {
+  "name" : "0"
+}, {
+  "name" : "1"
+} ]
+
+
+WRAPPER
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files/>
+===json===
+{
+  "files" : [ ]
+}
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files><file name="0"/></files>
+===json===
+{
+  "files" : [ {
+    "name" : "0"
+  } ]
+}
+===xml===
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><files><file name="0"/><file name="1"/></files>
+===json===
+{
+  "files" : [ {
+    "name" : "0"
+  }, {
+    "name" : "1"
+  } ]
+}
