@@ -32,6 +32,7 @@ public class FilesResource {
 
   @Path("/array{count:(/\\d*)?}")
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @GET
   public Bean[] getArray(@PathParam("count") String count) {
     List<Bean> list = createList(count);
     return list.toArray(new Bean[list.size()]);
